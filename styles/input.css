@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@layer components {
+
+  html {
+    font-size: clamp(.5rem, 1.5vw, 1rem);
+  }
+
+  .login-bg {
+    background-image   : url("../assets/fondoLogin.webp");
+    background-size    : cover;
+    background-position: center;
+    background-repeat  : no-repeat;
+  }
+
+  .loginContainer {
+    @apply relative;
+  }
+
+  .label {
+    @apply text-2xl font-semibold absolute rounded-lg top-1/2 -translate-y-1/2 pointer-events-none transition-all z-10;
+  }
+
+  .input {
+    @apply border-b-2 text-2xl focus:outline-none p-2 w-full border-blue-800 focus:border-blue-400;
+  }
+
+  .input:focus+.label,
+  .input:not(:placeholder-shown)+.label {
+    @apply -top-2 text-base left-0 text-blue-900;
+  }
+
+  select {
+    background: #2c3e50 url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23193cb8" width="50px" height="50px"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center/30px;
+  }
+
+  .successAlert {
+    @apply bg-green-200/30 text-green-700 border-green-600 -translate-x-150 xl:-translate-x-200;
+  }
+
+  .errorAlert {
+    @apply bg-red-200/30 text-red-700 border-red-500 -translate-x-150 xl:-translate-x-200;
+  }
+
+  
+}
