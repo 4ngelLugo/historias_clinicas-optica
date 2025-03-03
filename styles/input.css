@@ -22,7 +22,7 @@
   }
 
   .input {
-    @apply border-b-2 text-2xl focus:outline-none p-2 w-full border-blue-800 focus:border-blue-400;
+    @apply border-b-2 text-2xl focus:outline-none p-2 border-blue-800 focus:border-blue-400;
   }
 
   .input:focus+.label,

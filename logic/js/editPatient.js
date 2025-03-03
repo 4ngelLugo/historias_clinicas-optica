@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(createPatientForm)
 
-    fetch('../logic/php/createPatientLogic.php', {
+    fetch('../logic/php/editPatientLogic.php', {
       method: 'POST',
       body: formData
     })
@@ -27,24 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
               showAlert('No se pudo conectar con la base de datos', 'errorAlert', alert)
               break;
 
-            case 'patient doesnt exists':
-              showAlert('El paciente no existe', 'errorAlert', alert)
+            case 'user already exists':
+              showAlert('No existe un paciente con esta id')
               break;
 
-            case 'creation error':
-              showAlert('Ocurrió un error al crear el paciente', 'errorAlert', alert)
+            case 'update error':
+              showAlert('Ocurrió un error al editar el paciente', 'errorAlert', alert)
           }
         } else if (response.success) {
-          showAlert('Paciente creado', 'successAlert', alert)
+          showAlert('Paciente editado', 'successAlert', alert)
           setTimeout(() => {
             window.location.reload()
           }, 2000)
         }
       })
-      .catch((error) => {
-        showAlert('Hubo un problema con la solicitud', 'errorAlert', alert);
-        console.error(error);
-      });
+    // .catch((error) => {
+    //   showAlert('Hubo un problema con la solicitud', 'errorAlert', alert);
+    //   console.error(error);
+    // });
 
   })
 

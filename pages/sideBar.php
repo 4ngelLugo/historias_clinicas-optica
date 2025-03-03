@@ -1,4 +1,4 @@
-<aside class="h-full w-96 p-4 bg-white rounded-xl flex flex-col justify-between shadow-xl z-10">
+<aside class="h-full lg:min-w-96 p-4 bg-white rounded-xl flex flex-col justify-between shadow-xl z-10">
   <div class="flex flex-col gap-4">
     <div class="p-4">
       <p class="text-4xl mb-2 text-blue-800"><strong><?= $_SESSION['user_name'] ?></strong></p>
@@ -20,8 +20,8 @@
         <button id="pacientsMenuBtn" class="p-4 block w-full text-left text-2xl bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white hover:shadow-lg rounded-xl transition-all relative">
           Pacientes
           <div id="pacientsMenu" class="absolute right-0 bg-white mt-4 text-black rounded-md shadow-xl hidden z-10">
-            <a href="?page=listPacients" class="block text-xl p-4 rounded-md transition-colors hover:bg-slate-100">Consultar Pacientes</a>
-            <a href="?page=createPacient" class="block text-xl p-4 rounded-md transition-colors border-t border-slate-200 hover:bg-slate-100">Crear Pacientes</a>
+            <a href="?page=listPatients" class="block text-xl p-4 rounded-md transition-colors hover:bg-slate-100">Consultar Pacientes</a>
+            <a href="?page=createPatient" class="block text-xl p-4 rounded-md transition-colors border-t border-slate-200 hover:bg-slate-100">Crear Pacientes</a>
           </div>
         </button>
 

@@ -21,23 +21,18 @@ $userNumber = 1;
     </thead>
     <tbody>
       <?php foreach ($users as $user) {
-
-        if (($userNumber % 2) == 0) {
-          $even_row = 'bg-slate-100';
-        } else {
-          $even_row = '';
-        }
-
-        $userNumber++;
+        $even_row = ($userNumber % 2 == 0) ? 'bg-slate-100' : '';
       ?>
         <tr class="divide-x-2 divide-slate-200 <?= $even_row ?>">
-          <td class="px-4 py-2"><?= $user['usu_id'] ?></td>
-          <td class="px-4 py-2"><?= $user['usu_docum'] ?></td>
-          <td class="px-4 py-2"><?= $user['usu_nombre'] ?></td>
-          <td class="px-4 py-2"><?= $user['usu_apellido'] ?></td>
-          <td class="px-4 py-2"><?= $user['rol_nombre'] ?></td>
+          <td class="px-4 py-2"><?= htmlspecialchars($user['usu_id']) ?></td>
+          <td class="px-4 py-2"><?= htmlspecialchars($user['usu_docum']) ?></td>
+          <td class="px-4 py-2"><?= htmlspecialchars($user['usu_nombre']) ?></td>
+          <td class="px-4 py-2"><?= htmlspecialchars($user['usu_apellido']) ?></td>
+          <td class="px-4 py-2"><?= htmlspecialchars($user['rol_nombre']) ?></td>
         </tr>
-      <?php } ?>
+      <?php
+        $userNumber++;
+      } ?>
     </tbody>
   </table>
 </aside>

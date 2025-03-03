@@ -22,12 +22,16 @@ require_once '../config/database.php';
           include_once './listUsers.php';
           break;
 
-        case 'listPacients':
+        case 'listPatients':
           include_once './listPatients.php';
           break;
 
-        case 'createPacient':
+        case 'createPatient':
           include_once './createPatient.php';
+          break;
+
+        case 'editPatient':
+          include_once './editPatient.php';
           break;
 
         default:
