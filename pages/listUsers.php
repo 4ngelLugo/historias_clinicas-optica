@@ -7,7 +7,7 @@ $users = $get_users->fetchAll(PDO::FETCH_ASSOC);
 $userNumber = 1;
 ?>
 
-<aside class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
+<section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
   <h1 class="text-4xl font-bold text-blue-800">Lista de usuarios</h1>
   <table class="rounded-xl overflow-hidden shadow-lg">
     <thead class="bg-blue-400 text-white text-xl font-bold">
@@ -35,4 +35,4 @@ $userNumber = 1;
       } ?>
     </tbody>
   </table>
-</aside>
+</section>

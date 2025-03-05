@@ -5,11 +5,9 @@ $get_patients->bindParam(':estado', $estado, PDO::PARAM_STR);
 $get_patients->execute();
 
 $patients = $get_patients->fetchAll(PDO::FETCH_ASSOC);
-
-$patientNumber = 1;
 ?>
 
-<aside class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
+<section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
   <h1 class="text-4xl font-bold text-blue-800">Lista de pacientes</h1>
   <table class="rounded-xl overflow-hidden shadow-lg text-xl">
     <thead class="bg-blue-400 text-white font-bold">
@@ -23,8 +21,8 @@ $patientNumber = 1;
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($patients as $patient) {
-        $even_row = ($patientNumber % 2 == 0) ? 'bg-slate-100' : '';
+      <?php foreach ($patients as $index => $patient) {
+        $even_row = ($index % 2 == 1) ? 'bg-slate-100' : '';
         $patientName = htmlspecialchars($patient['pac_nombre'] . " " . $patient['pac_apellido']);
       ?>
         <tr class="divide-x-2 divide-slate-200 <?= $even_row ?>">
@@ -34,20 +32,43 @@ $patientNumber = 1;
           <td class="px-4 py-2"><?= htmlspecialchars($patient['gen_nombre']) ?></td>
           <td class="px-4 py-2"><?= htmlspecialchars($patient['estr_nombre']) ?></td>
           <td class="px-4 py-2 flex justify-evenly">
-            <a class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer transition-all rounded-lg text-white">
+            <a
+              class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer transition-all rounded-lg text-white">
               <img src="../assets/icons/create-document.svg" alt="Crear historia clínica" width="24" height="24">
             </a>
-            <a href="?page=editPatient&patient=<?= $patient['pac_id'] ?>" class="font-semibold p-3 bg-amber-300 hover:bg-amber-500 cursor-pointer rounded-lg">
+            <a
+              href="?page=editPatient&patient=<?= htmlspecialchars($patient['pac_id']) ?>"
+              class="font-semibold p-3 bg-amber-300 hover:bg-amber-500 cursor-pointer rounded-lg">
               <img src="../assets/icons/edit-user.svg" alt="Editar paciente" width="24" height="24">
             </a>
-            <a class="font-semibold p-3 bg-rose-400 hover:bg-rose-600 cursor-pointer rounded-lg text-white">
+            <a
+              href="#"
+              onclick="openModal(<?= htmlspecialchars($patient['pac_id']) ?>, '<?= addslashes($patientName) ?>')"
+              class="font-semibold p-3 bg-rose-500 hover:bg-rose-700 cursor-pointer rounded-lg">
               <img src="../assets/icons/trash-bin.svg" alt="Eliminar paciente" width="24" height="24">
             </a>
           </td>
         </tr>
-      <?php
-        $patientNumber++;
-      } ?>
+      <?php } ?>
     </tbody>
   </table>
-</aside>
+</section>
+
+<section id="modalNullify" class="absolute w-full h-full bg-slate-800/50 z-50 top-0 left-0 place-content-center hidden">
+  <article id="modalNullifyContent" class="p-5 bg-white rounded-xl display flex flex-col space-y-5">
+    <header class="text-4xl font-bold text-blue-800">
+      Anular paciente
+    </header>
+    <hr class="border-slate-300">
+    <p id="modalNullifyText" class="text-xl flex flex-col gap-2"></p>
+    <hr class="border-slate-300">
+    <footer class="flex justify-end gap-3 text-xl">
+      <button type="button" id="modalNullifyCancel" class="font-semibold p-3 bg-slate-100 hover:bg-slate-300 cursor-pointer rounded-lg">Cancelar</button>
+      <button type="button" id="modalNullifyAccept" class="font-semibold p-3 text-white bg-rose-500 hover:bg-rose-700 cursor-pointer rounded-lg">Anular</button>
+    </footer>
+  </article>
+</section>
+
+<div id="alert" class="p-6 pr-20 backdrop-blur-xl text-3xl xl:text-5xl font-bold border-l-8 absolute -right-150 xl:-right-200 bottom-32 transition-all z-50"></div>
+
+<script type="module" src="../logic/js/nullifyPatient.js"></script>

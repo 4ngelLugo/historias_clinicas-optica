@@ -27,7 +27,7 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<aside class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
+<section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
   <h1 class="text-4xl font-bold text-blue-800">Editar Paciente <?= $patient_id ?></h1>
 
   <form id="createPatient_form" class="h-full flex flex-col justify-between">
@@ -115,9 +115,9 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
 
-    <button type="submit" class="py-3 mt-4 bg-blue-600 text-white text-2xl font-bold rounded-xl hover:cursor-pointer hover:bg-blue-800 transition-colors">Crear paciente</button>
+    <button type="submit" class="py-3 mt-4 bg-blue-600 text-white text-2xl font-bold rounded-xl hover:cursor-pointer hover:bg-blue-800 transition-colors">Editar paciente</button>
   </form>
-</aside>
+</section>
 
 <div id="alert" class="p-6 pr-20 backdrop-blur-xl text-3xl xl:text-5xl font-bold border-l-8 absolute -right-150 xl:-right-200 bottom-32 transition-all z-50"></div>
 

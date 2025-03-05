@@ -1,10 +1,10 @@
 export const showAlert = (message, type, alert) => {
-  alert.innerHTML = `${message}`;
-  alert.classList.add(type);
+  alert.innerHTML = `${message}`
+  alert.classList.add(type)
   setTimeout(() => {
-    alert.classList.remove(type);
+    alert.classList.remove(type)
     setTimeout(() => {
-      alert.innerHTML = '';
+      alert.innerHTML = ''
     }, 500)
-  }, 5000);
+  }, 5000)
 }
