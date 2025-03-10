@@ -1,15 +1,16 @@
 import { showAlert } from './functions.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const createPatientForm = document.getElementById('createPatient_form')
+  const createRecordForm = document.getElementById('createRecord_form')
   const alert = document.getElementById('alert')
 
-  createPatientForm.addEventListener('submit', async (event) => {
+  createRecordForm.addEventListener('submit', async (event) => {
+
     event.preventDefault()
 
-    const formData = new FormData(createPatientForm)
+    const formData = new FormData(createRecordForm)
 
-    fetch('../logic/php/createPatientLogic.php', {
+    fetch('../logic/php/createRecordLogic.php', {
       method: 'POST',
       body: formData
     })
@@ -25,16 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
               showAlert('No se pudo conectar con la base de datos', 'errorAlert', alert)
               break
 
-            case 'user already exists':
-              showAlert('El paciente ya existe', 'errorAlert', alert)
+            case 'patient doesnt exists':
+              showAlert('El paciente no existe', 'errorAlert', alert)
               break
 
             case 'creation error':
-              showAlert('Ocurrió un error al crear el paciente', 'errorAlert', alert)
-              break
+              showAlert('Ocurrió un error al crear la historia', 'errorAlert', alert)
           }
         } else if (response.success) {
-          showAlert('Paciente creado exitosamente', 'successAlert', alert)
+          showAlert('Historia creada exitosamente', 'successAlert', alert)
           setTimeout(() => {
             window.location.reload()
           }, 2000)

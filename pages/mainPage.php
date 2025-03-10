@@ -2,7 +2,6 @@
 require_once '../logic/php/verifySession.php';
 require_once '../config/database.php';
 require_once '../logic/php/functions.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
