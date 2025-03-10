@@ -1,6 +1,8 @@
 <?php
 require_once '../logic/php/verifySession.php';
 require_once '../config/database.php';
+require_once '../logic/php/functions.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +34,10 @@ require_once '../config/database.php';
 
         case 'editPatient':
           include_once './editPatient.php';
+          break;
+
+        case 'createRecord':
+          include_once './createRecord.php';
           break;
 
         default:

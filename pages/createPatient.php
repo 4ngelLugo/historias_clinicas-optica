@@ -1,18 +1,11 @@
 <?php
+$hobbies = getAllHobbies($conn);
 
-$get_hobbies = $conn->prepare("SELECT * FROM hobbies");
-$get_hobbies->execute();
-$hobbies = $get_hobbies->fetchAll(PDO::FETCH_ASSOC);
+$estratums = getAllStratums($conn);
 
-$get_estrs = $conn->prepare("SELECT * FROM estratos");
-$get_estrs->execute();
-$estrs = $get_estrs->fetchAll(PDO::FETCH_ASSOC);
-
-$get_genders = $conn->prepare("SELECT * FROM generos");
-$get_genders->execute();
-$genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
-
+$genders = getAllGenders($conn);
 ?>
+
 
 <section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
   <h1 class="text-4xl font-bold text-blue-800">Crear Paciente</h1>
@@ -77,7 +70,7 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
       <div class="flex flex-col gap-2">
         <span class="text-2xl font-semibold">Estrato</span>
         <div class="grid grid-cols-2 gap-4 mt-2 p-2">
-          <?php foreach ($estrs as $estr) { ?>
+          <?php foreach ($estratums as $estr) { ?>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
                 type="radio"
@@ -91,7 +84,7 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </div>
-    
+
     <button type="submit" class="py-3 mt-4 bg-blue-600 text-white text-2xl font-bold rounded-xl hover:cursor-pointer hover:bg-blue-800 transition-colors">Crear paciente</button>
   </form>
 </section>

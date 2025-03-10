@@ -1,10 +1,5 @@
 <?php
-$estado = 'activo';
-$get_patients = $conn->prepare("SELECT * FROM pacientes INNER JOIN generos ON pacientes.gen_id = generos.gen_id INNER JOIN estratos ON pacientes.estr_id = estratos.estr_id WHERE pac_estado = :estado ORDER BY pac_id ASC");
-$get_patients->bindParam(':estado', $estado, PDO::PARAM_STR);
-$get_patients->execute();
-
-$patients = $get_patients->fetchAll(PDO::FETCH_ASSOC);
+$patients = getAllPatients($conn);
 ?>
 
 <section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
@@ -33,6 +28,7 @@ $patients = $get_patients->fetchAll(PDO::FETCH_ASSOC);
           <td class="px-4 py-2"><?= htmlspecialchars($patient['estr_nombre']) ?></td>
           <td class="px-4 py-2 flex justify-evenly">
             <a
+              href="?page=createRecord&patient=<?= htmlspecialchars($patient['pac_id']) ?>"
               class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer transition-all rounded-lg text-white">
               <img src="../assets/icons/create-document.svg" alt="Crear historia clínica" width="24" height="24">
             </a>

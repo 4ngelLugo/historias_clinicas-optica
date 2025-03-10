@@ -1,8 +1,5 @@
 <?php
-$get_users = $conn->prepare("SELECT * FROM usuarios INNER JOIN roles ON usuarios.rol_id = roles.rol_id");
-$get_users->execute();
-
-$users = $get_users->fetchAll(PDO::FETCH_ASSOC);
+$users = getAllUsers($conn);
 
 $userNumber = 1;
 ?>

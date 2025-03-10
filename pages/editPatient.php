@@ -1,34 +1,21 @@
 <?php
 
-$patient_id = $_GET['patient'] ?? null;
+$patientId = $_GET['patient'] ?? null;
 
-$get_patient = $conn->prepare("SELECT * FROM pacientes WHERE pac_id = :patient_id");
-$get_patient->bindParam(':patient_id', $patient_id, PDO::PARAM_INT);
-$get_patient->execute();
-$patient = $get_patient->fetch(PDO::FETCH_ASSOC);
+$patient = getPatientById($conn, $patientId);
 
-$get_patient_hobbies = $conn->prepare("SELECT * FROM paciente_hobbies WHERE pac_id = :patient_id");
-$get_patient_hobbies->bindParam(':patient_id', $patient_id, PDO::PARAM_INT);
-$get_patient_hobbies->execute();
-$patient_hobbies = $get_patient_hobbies->fetchAll(PDO::FETCH_ASSOC);
-$patient_hobby_ids = array_column($patient_hobbies, 'hob_id');
+$patientHobbies = getPatientHobbies($conn, $patientId);
+$patientHobbyIds = array_column($patientHobbies, 'hob_id');
 
-$get_hobbies = $conn->prepare("SELECT * FROM hobbies");
-$get_hobbies->execute();
-$hobbies = $get_hobbies->fetchAll(PDO::FETCH_ASSOC);
+$hobbies = getAllHobbies($conn);
 
-$get_estrs = $conn->prepare("SELECT * FROM estratos");
-$get_estrs->execute();
-$estrs = $get_estrs->fetchAll(PDO::FETCH_ASSOC);
+$estratums = getAllStratums($conn);
 
-$get_genders = $conn->prepare("SELECT * FROM generos");
-$get_genders->execute();
-$genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
-
+$genders = getAllGenders($conn);
 ?>
 
 <section class="h-full flex-grow p-8 bg-white rounded-xl flex flex-col gap-10 shadow-xl z-10">
-  <h1 class="text-4xl font-bold text-blue-800">Editar Paciente <?= $patient_id ?></h1>
+  <h1 class="text-4xl font-bold text-blue-800">Editar Paciente <?= $patientId ?></h1>
 
   <form id="createPatient_form" class="h-full flex flex-col justify-between">
     <div class="grid grid-cols-3 gap-8">
@@ -43,8 +30,8 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
       ?>
 
       <div class="flex flex-col relative mb-10">
-        <input type="text" name="id" placeholder="" value="<?= $patient_id ?>" hidden>
-        <input type="text" id="id" placeholder="" class="input text-slate-400" value="<?= $patient_id ?>" disabled>
+        <input type="text" name="id" placeholder="" value="<?= $patientId ?>" hidden>
+        <input type="text" id="id" placeholder="" class="input text-slate-400" value="<?= $patientId ?>" disabled>
         <label for="id" class="label">Identificación</label>
       </div>
 
@@ -66,7 +53,7 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
                 name="hobbie[]"
                 value="<?= htmlspecialchars($hobbie['hob_id']) ?>"
                 class="hidden peer"
-                <?= in_array($hobbie['hob_id'], $patient_hobby_ids) ? 'checked' : '' ?>>
+                <?= in_array($hobbie['hob_id'], $patientHobbyIds) ? 'checked' : '' ?>>
               <div class="p-4 w-full h-full rounded-lg bg-slate-100 border-2 border-transparent hover:border-blue-800 hover:text-blue-800 hover:peer-checked:bg-transparent peer-checked:bg-blue-800 peer-checked:text-white peer-checked:shadow-xl transition-all">
                 <span class="text-[clamp(.8rem,1.2vw,1.3rem)] font-semibold xl:font-bold z-20"><?= htmlspecialchars($hobbie['hob_nombre']) ?></span>
               </div>
@@ -99,7 +86,7 @@ $genders = $get_genders->fetchAll(PDO::FETCH_ASSOC);
       <div class="flex flex-col gap-2">
         <span class="text-2xl font-semibold">Estrato</span>
         <div class="grid grid-cols-2 gap-4 mt-2 p-2">
-          <?php foreach ($estrs as $estr) { ?>
+          <?php foreach ($estratums as $estr) { ?>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
                 type="radio"
