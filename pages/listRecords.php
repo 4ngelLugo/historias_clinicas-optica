@@ -28,8 +28,9 @@ $records = getAllRecords($conn);
             <a
               href="#"
               onclick='openModal(<?= json_encode($record, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>)'
-              class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer rounded-lg">
+              class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer rounded-lg text-white flex gap-2 justify-center items-center">
               <img src="../assets/icons/eye.svg" alt="Eliminar paciente" width="24" height="24">
+              <span>Ver detalles</span>
             </a>
           </td>
         </tr>

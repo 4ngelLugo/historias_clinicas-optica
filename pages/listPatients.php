@@ -29,18 +29,21 @@ $patients = getAllPatients($conn);
           <td class="px-4 py-2 flex justify-evenly">
             <a
               href="?page=createRecord&patient=<?= htmlspecialchars($patient['pac_id']) ?>"
-              class="font-semibold p-3 bg-emerald-400 hover:bg-emerald-600 cursor-pointer transition-all rounded-lg text-white">
+              class="font-semibold p-3 bg-emerald-400 hover:bg-emerald-600 cursor-pointer transition-all rounded-lg text-white flex gap-2">
+              Crear
               <img src="../assets/icons/create-document.svg" alt="Crear historia clínica" width="24" height="24">
             </a>
             <a
               href="?page=editPatient&patient=<?= htmlspecialchars($patient['pac_id']) ?>"
-              class="font-semibold p-3 bg-amber-300 hover:bg-amber-500 cursor-pointer rounded-lg">
+              class="font-semibold p-3 bg-amber-300 hover:bg-amber-500 cursor-pointer rounded-lg flex gap-2">
+              Editar
               <img src="../assets/icons/edit-user.svg" alt="Editar paciente" width="24" height="24">
             </a>
             <a
               href="#"
               onclick="openModal(<?= htmlspecialchars($patient['pac_id']) ?>, '<?= addslashes($patientName) ?>')"
-              class="font-semibold p-3 bg-rose-500 hover:bg-rose-700 cursor-pointer rounded-lg">
+              class="font-semibold p-3 bg-rose-500 hover:bg-rose-700 cursor-pointer rounded-lg flex gap-2 text-white">
+              Anular
               <img src="../assets/icons/trash-bin.svg" alt="Eliminar paciente" width="24" height="24">
             </a>
           </td>
