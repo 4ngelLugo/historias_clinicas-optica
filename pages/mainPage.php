@@ -19,6 +19,10 @@ require_once '../logic/php/functions.php';
 
     if (isset($_GET['page'])) {
       switch ($_GET['page']) {
+        case 'listRecords':
+          include_once './listRecords.php';
+          break;
+
         case 'listUsers':
           include_once './listUsers.php';
           break;

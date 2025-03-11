@@ -78,3 +78,26 @@ function getAllGenders($conn)
 
   return null;
 }
+
+function getPatientGender($conn, $patientId)
+{
+  $get_gender = $conn->prepare("SELECT gen_nombre FROM generos g INNER JOIN pacientes p ON p.gen_id = g.gen_id WHERE pac_id = :patientId");
+  $get_gender->bindParam(':patientId', $patientId, PDO::PARAM_INT);
+
+  if ($get_gender->execute()) {
+    return $get_gender->fetch(PDO::FETCH_ASSOC);
+  }
+
+  return null;
+}
+
+function getAllRecords($conn)
+{
+  $get_records = $conn->prepare("SELECT * FROM historias h INNER JOIN pacientes p ON h.pac_id = p.pac_id INNER JOIN generos g ON p.gen_id = g.gen_id");
+
+  if ($get_records->execute()) {
+    return $get_records->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  return null;
+}

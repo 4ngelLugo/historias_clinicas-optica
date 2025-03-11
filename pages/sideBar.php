@@ -15,17 +15,17 @@
           </div>
         </button>
 
-      <?php }
-      if ($_SESSION['user']['rol_id'] === 1 || $_SESSION['user']['rol_id'] === 2) { ?>
-        <button id="pacientsMenuBtn" class="p-4 block w-full text-left text-2xl bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white hover:shadow-lg rounded-xl transition-all relative">
-          Pacientes
-          <div id="pacientsMenu" class="absolute right-0 bg-white mt-4 text-black rounded-md shadow-xl hidden z-10">
-            <a href="?page=listPatients" class="block text-xl p-4 rounded-md transition-colors hover:bg-slate-100">Consultar Pacientes</a>
-            <a href="?page=createPatient" class="block text-xl p-4 rounded-md transition-colors border-t border-slate-200 hover:bg-slate-100">Crear Pacientes</a>
-          </div>
-        </button>
-
       <?php } ?>
+      <button id="pacientsMenuBtn" class="p-4 block w-full text-left text-2xl bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white hover:shadow-lg rounded-xl transition-all relative">
+        Pacientes
+        <div id="pacientsMenu" class="absolute right-0 bg-white mt-4 text-black rounded-md shadow-xl hidden z-10">
+          <a href="?page=listPatients" class="block text-xl p-4 rounded-md transition-colors hover:bg-slate-100">Consultar Pacientes</a>
+          <a href="?page=createPatient" class="block text-xl p-4 rounded-md transition-colors border-t border-slate-200 hover:bg-slate-100">Crear Pacientes</a>
+        </div>
+      </button>
+
+      <a href="?page=listRecords" class="p-4 block w-full text-left text-2xl bg-blue-50 cursor-pointer hover:bg-blue-500 hover:text-white hover:shadow-lg rounded-xl transition-all relative">Historias clinicas</a>
+
     </div>
   </div>
   </article>

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (response.success) {
           showAlert(`Bienvenido, ${response.userName}`, 'successAlert', alert)
           setTimeout(() => {
-            window.location = './pages/mainPage.php'
+            window.location = './pages/mainPage.php?page=listRecords'
           }, 2000)
         }
       })

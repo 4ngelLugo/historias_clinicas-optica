@@ -29,7 +29,7 @@ $patients = getAllPatients($conn);
           <td class="px-4 py-2 flex justify-evenly">
             <a
               href="?page=createRecord&patient=<?= htmlspecialchars($patient['pac_id']) ?>"
-              class="font-semibold p-3 bg-blue-400 hover:bg-blue-600 cursor-pointer transition-all rounded-lg text-white">
+              class="font-semibold p-3 bg-emerald-400 hover:bg-emerald-600 cursor-pointer transition-all rounded-lg text-white">
               <img src="../assets/icons/create-document.svg" alt="Crear historia clínica" width="24" height="24">
             </a>
             <a
