@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2025 a las 22:29:45
+-- Tiempo de generación: 11-03-2025 a las 22:28:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -82,6 +82,16 @@ CREATE TABLE `historias` (
   `pac_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `historias`
+--
+
+INSERT INTO `historias` (`hist_id`, `hist_motv`, `hist_esfod`, `hist_cilod`, `hist_ejeod`, `hist_esfoi`, `hist_ciloi`, `hist_ejeoi`, `hist_diaod`, `hist_diaoi`, `hist_recom`, `pac_id`) VALUES
+(1, 'asdasd', 'asd', 'asdasd', 'asd', 'asd', 'asd', 'asd', 'asdas', 'asda', 'asdasd', 1005980123),
+(2, 'asdasd', 'asd', 'asdasd', 'asd', 'asd', 'asd', 'asd', 'asdas', 'asda', 'asdasd', 1234234213),
+(3, 'qwqwe', 'qweq', 'qweqw', 'qwe', 'weqwrf', 'eq', 'qw', 'afgas', 'df', 'asdfasdf', 1005980123),
+(4, 'Paciente visita por enrojecimiento de ambos ojos', '-5.00', '-0.50', '180', '-4.00', '-0.25', '180', 'Astigmatismo leve', 'Sin patologia', 'Aplicar gotas 3 veces al día', 5678);
+
 -- --------------------------------------------------------
 
 --
@@ -117,17 +127,19 @@ CREATE TABLE `pacientes` (
   `pac_telefono` bigint(20) NOT NULL,
   `gen_id` int(11) NOT NULL,
   `estr_id` int(11) NOT NULL,
-  `usu_estado` enum('activo','desactivado') DEFAULT 'activo'
+  `pac_estado` enum('activo','inactivo') NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`pac_id`, `pac_nombre`, `pac_apellido`, `pac_correo`, `pac_direccion`, `pac_telefono`, `gen_id`, `estr_id`, `usu_estado`) VALUES
-(234, '234', '234', '234@gmal.com', '234', 234, 2, 4, 'activo'),
+INSERT INTO `pacientes` (`pac_id`, `pac_nombre`, `pac_apellido`, `pac_correo`, `pac_direccion`, `pac_telefono`, `gen_id`, `estr_id`, `pac_estado`) VALUES
+(234, 'lolololo', '234', '234@gmal.com', '23413212', 234, 2, 4, 'activo'),
+(345, '345', '345', '345@gmail.com', '345', 345, 2, 1, 'inactivo'),
+(5678, 'Juan', 'Perez', 'JuanPerez@gmail.com', 'Calle 1 # 1-1', 3154071267, 1, 3, 'activo'),
 (12334, '123', '123', '123@123.com', '123', 123, 2, 3, 'activo'),
-(1005980123, 'Miguel', 'Lugo', 'example@example.com', 'Calle*******', 3128466492, 1, 2, 'activo'),
+(1005980123, 'Miguel', 'Lugo', 'example@example.com', '*************', 3128466492, 1, 2, 'activo'),
 (1234234213, 'Carlos', 'Perez', 'example@example.com', 'Calle*******', 3122131233, 1, 4, 'activo');
 
 -- --------------------------------------------------------
@@ -149,7 +161,14 @@ CREATE TABLE `paciente_hobbies` (
 INSERT INTO `paciente_hobbies` (`pac_hob_id`, `pac_id`, `hob_id`) VALUES
 (6, 12334, 2),
 (7, 12334, 3),
-(8, 234, 2);
+(12, 1005980123, 3),
+(13, 234, 1),
+(14, 234, 3),
+(15, 345, 1),
+(16, 345, 2),
+(17, 345, 3),
+(18, 5678, 1),
+(19, 5678, 3);
 
 -- --------------------------------------------------------
 
@@ -168,8 +187,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`rol_id`, `rol_nombre`) VALUES
 (1, 'Administrador'),
-(2, 'Optometra'),
-(3, 'Paciente');
+(2, 'Optometra');
 
 -- --------------------------------------------------------
 
@@ -192,8 +210,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`usu_id`, `usu_docum`, `usu_nombre`, `usu_apellido`, `usu_clave`, `rol_id`) VALUES
 (1, 123, 'Angel', 'Lugo', '123', 1),
-(2, 456, '456', '456', '456', 2),
-(3, 789, '789', '789', '789', 3);
+(2, 456, '456', '456', '456', 2);
 
 --
 -- Índices para tablas volcadas
@@ -274,7 +291,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `historias`
 --
 ALTER TABLE `historias`
-  MODIFY `hist_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `hist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `hobbies`
@@ -292,7 +309,7 @@ ALTER TABLE `pacientes`
 -- AUTO_INCREMENT de la tabla `paciente_hobbies`
 --
 ALTER TABLE `paciente_hobbies`
-  MODIFY `pac_hob_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `pac_hob_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`

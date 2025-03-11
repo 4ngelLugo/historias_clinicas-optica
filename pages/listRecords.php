@@ -45,7 +45,7 @@ $records = getAllRecords($conn);
       Historia Clinica
     </header>
     <hr class="border-slate-300">
-    <div class="text-xl grid grid-cols-3 gap-6">
+    <div class="text-xl grid grid-cols-3 gap-6 gap-x-20">
 
       <div class="flex flex-col">
         <span class="font-bold">N° Historia:</span>

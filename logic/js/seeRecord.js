@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modalRecord) {
       numHistoria.innerText = recordId.hist_id
-      pacHistoria.innerText = recordId.pac_nombre + " " + recordId.pac_apellido
+      pacHistoria.innerText = `${recordId.pac_nombre} ${recordId.pac_apellido}`
       genHistoria.innerText = recordId.gen_nombre
       genHistoria.innerText = recordId.gen_nombre
       motv.innerText = recordId.hist_motv
