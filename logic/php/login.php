@@ -20,7 +20,8 @@ if ($id && $password && $role) {
 
     if ($user && $user['usu_clave'] == $password) {
 
-      $get_role = $conn->prepare("SELECT rol_nombre FROM roles JOIN usuarios ON roles.rol_id = usuarios.rol_id");
+      $get_role = $conn->prepare("SELECT rol_nombre FROM roles JOIN usuarios ON roles.rol_id = usuarios.rol_id WHERE usu_nombre = :usu_nombre");
+      $get_role->bindParam(':usu_nombre', $user['usu_nombre'], PDO::PARAM_STR);
       $get_role->execute();
 
       $role = $get_role->fetch(PDO::FETCH_ASSOC);
