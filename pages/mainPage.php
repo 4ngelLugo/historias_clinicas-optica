@@ -15,39 +15,22 @@ require_once '../logic/php/functions.php';
 
 <body>
   <main class="h-screen p-4 bg-slate-200 flex gap-4 relative overflow-hidden">
-    <?php include_once './sideBar.php';
+    <?php
+    $pages = [
+      "listRecords" => "listRecords.php",
+      "listUsers" => "listUsers.php",
+      "listPatients" => "listPatients.php",
+      "createRecords" => "createRecords.php",
+      "createPatients" => "createPatients.php",
+      "editPatients" => "editPatients.php"
+    ];
 
-    if (isset($_GET['page'])) {
-      switch ($_GET['page']) {
-        case 'listRecords':
-          include_once './listRecords.php';
-          break;
+    $page = $_GET['page'];
+    $file = $pages[$page] ?? '404.php';
 
-        case 'listUsers':
-          include_once './listUsers.php';
-          break;
-
-        case 'listPatients':
-          include_once './listPatients.php';
-          break;
-
-        case 'createPatient':
-          include_once './createPatient.php';
-          break;
-
-        case 'editPatient':
-          include_once './editPatient.php';
-          break;
-
-        case 'createRecord':
-          include_once './createRecord.php';
-          break;
-
-        default:
-          include_once './404.php';
-          break;
-      }
-    } ?>
+    include_once './sideBar.php';
+    include_once './' . $file;
+    ?>
   </main>
 
   <script src="../logic/js/dropDownMenu.js"></script>
