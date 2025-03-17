@@ -30,7 +30,7 @@
   </div>
   </article>
   <button
-    onclick="window.location = '../logic/php/logOut.php'"
+    onclick="window.location = '../../logic/logout.php'"
     class="p-2 bg-red-500 font-bold text-xl text-white rounded-md cursor-pointer hover:bg-red-800 transition-all">
     Cerrar Sesión</button>
 </aside>

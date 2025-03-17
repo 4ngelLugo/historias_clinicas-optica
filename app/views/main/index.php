@@ -1,9 +1,5 @@
 <?php
-// require_once '../logic/php/verifySession.php';
-// require_once '../config/database.php';
-// require_once '../logic/php/functions.php';
-
-session_start();
+require_once '../../logic/verifySession.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
